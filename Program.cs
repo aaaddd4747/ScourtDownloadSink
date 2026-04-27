@@ -86,7 +86,7 @@ class Program {
 						totalBytesRead += (ulong)slice.Count();
 						await files[0].fs.WriteAsync(slice);
 						Console.Write($"\rDownloading \"{files[0].name}\" {totalBytesRead / 1e0,5:N0} / {files[0].length / 1e0,5:N0} B ({((float)totalBytesRead / files[0].length) * 100,3:N0}%)");
-						if (files[0].length_remaining == 0) {
+						if (files[0].length_remaining == 0 && files.Count() > 1) {
 							Console.WriteLine();
 							files[0].fs.Flush();
 							files.RemoveAt(0);
